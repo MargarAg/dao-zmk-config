@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Margar Ag
+ * Copyright (c) 2021 Rafael Yumagulov
  *
  * SPDX-License-Identifier: MIT
  */
@@ -13,15 +13,6 @@
 #define RSE 2
 #define ADJ 3
 #define NBR 4
-#define CTL_A &mt LCTRL A
-#define ALT_S &mt LALT S
-#define GUI_D &mt LGUI D
-#define SHT_F &mt SHFT F
-#define SHT_J &mt SHFT J
-#define GUI_K &mt RGUI K
-#define ALT_L &mt RALT L
-#define CTL_SEMI &mt RCTRL SEMI
-#define SHT LSHFT
 
 &lt { quick_tap_ms = <200>; };
 &mt { quick_tap_ms = <200>; };
@@ -37,10 +28,10 @@
 //        | LSHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RALT |
 //                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
                         bindings = <
-    &none   &kp ESC &kp Q   &kp W   &kp E   &kp R   &kp T       &kp Y   &kp U   &kp I       &kp O   &kp P    &kp BSPC &none
-            TAB     CTL_A   ALT_S   GUI_D   SHT_F   &kp G       &kp H   SHT_J   GUI_K       ALT_L   CTL_SEMI &kp DQT
-            LSHFT   &kp Z   &kp X   &kp C   &kp V   &kp B       &kp N   &kp M   &kp COMMA   &kp DOT &kp FSLH &kp LBKT
-                            &kp TAB &kp SHT &lt NBR SPACE       &kp RET &mo LWR &mo RSE
+    &none   &kp ESC &kp Q       &kp W      &kp E      &kp R      &kp T       &kp Y   &kp U      &kp I       &kp O      &kp P          &kp BSPC &none
+            TAB     &mt LCTRL A &mt LALT S &mt LGUI D &mt SHFT F &kp G       &kp H   &mt SHFT J &mt RGUI K  &mt RALT L &mt RCTRL SEMI &kp DQT
+            LSHFT   &kp Z       &kp X      &kp C      &kp V      &kp B       &kp N   &kp M      &kp COMMA   &kp DOT    &kp FSLH       &kp LBKT
+                                &kp TAB    &kp LSHFT  &lt NBR SPACE          &kp RET &mo LWR    &mo RSE
                         >;
                 };
                 lower_layer {
