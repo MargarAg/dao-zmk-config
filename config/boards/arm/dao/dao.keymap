@@ -18,6 +18,17 @@
 &mt { quick_tap_ms = <200>; };
 
 / {
+    behaviors {
+        hp: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+    };
         keymap {
                 compatible = "zmk,keymap";
 
@@ -29,9 +40,9 @@
 //                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
                         bindings = <
     &none   &kp ESC   &kp Q       &kp W      &kp E      &kp R       &kp T       &kp Y   &kp U       &kp I       &kp O      &kp P          &kp BSPC &none
-            &kp TAB   &mt LCTRL A &mt LALT S &mt LGUI D &mt LSHFT F &kp G       &kp H   &mt RSHFT J &mt RGUI K  &mt RALT L &mt RCTRL SEMI &kp DQT
+            &kp TAB   &hp LCTRL A &hp LALT S &hp LGUI D &hp LSHFT F &kp G       &kp H   &hp RSHFT J &hp RGUI K  &hp RALT L &hp RCTRL SEMI &kp DQT
             &kp LSHFT &kp Z       &kp X      &kp C      &kp V       &kp B       &kp N   &kp M       &kp COMMA   &kp DOT    &kp FSLH       &kp LBKT
-                                  &kp TAB    &kp LSHFT  &lt NBR SPACE           &kp RET &mo LWR     &mo RSE
+                                  &kp TAB    &kp LSHFT  &lt NBR SPACE           &kp RET &mo RSE     &mo LWR
                         >;
                 };
                 lower_layer {
