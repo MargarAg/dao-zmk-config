@@ -19,15 +19,15 @@
 #define LT(LAYER, TAP) &u_lt LAYER TAP
 #define __(KEY) &kp KEY
 #define U_TAPPING_TERM 200
-#define C__A &u_mt LCTRL A
-#define A__S &u_mt LALT S
-#define G__D &u_mt LGUI D
-#define S__F &u_mt LSHFT F
-#define S__J &u_mt RSHFT J
-#define G__K &u_mt RGUI K
-#define S__F &u_mt LSHFT F
-#define A__L &u_mt RALT L
-#define C__SEMI &u_mt RCTRL SEMI
+#define C__A MT(LCTRL,A)
+#define A__S MT(LALT,S)
+#define G__D MT(LGUI,D)
+#define S__F MT(LSHFT,F)
+#define S__J MT(RSHFT,J)
+#define G__K MT(RGUI,K)
+#define S__F MT(LSHFT,F)
+#define A__L MT(RALT,L)
+#define C__SEMI MT(RCTRL,SEMI)
 
 
 &lt { quick_tap_ms = <200>; };
