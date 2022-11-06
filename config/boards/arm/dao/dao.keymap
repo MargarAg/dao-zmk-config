@@ -13,36 +13,58 @@
 #define RSE 2
 #define ADJ 3
 #define NBR 4
+#define XXXX &none
+#define TTTT &trans
+#define MT(MOD, TAP) &u_mt MOD TAP
+#define LT(LAYER, TAP) &u_lt LAYER TAP
+#define __(KEY) &kp KEY
+#define U_TAPPING_TERM 200
+#define C__A &u_mt LCTRL A
+#define A__S &u_mt LALT S
+#define G__D &u_mt LGUI D
+#define S__F &u_mt LSHFT F
+#define S__J &u_mt RSHFT J
+#define G__K &u_mt RGUI K
+#define S__F &u_mt LSHFT F
+#define A__L &u_mt RALT L
+#define C__SEMI &u_mt RCTRL SEMI
+
 
 &lt { quick_tap_ms = <200>; };
 &mt { quick_tap_ms = <200>; };
 
 / {
     behaviors {
-        hp: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+        u_mt: u_mt {
+          compatible = "zmk,behavior-hold-tap";
+          label = "u_mt";
+          #binding-cells = <2>;
+          tapping_term_ms = <U_TAPPING_TERM>;
+          flavor = "tap-preferred";
+          bindings = <&kp>, <&kp>;
+        };
+        u_lt: u_lt {
+          compatible = "zmk,behavior-hold-tap";
+          label = "u_lt";
+          #binding-cells = <2>;
+          tapping_term_ms = <U_TAPPING_TERM>;
+          flavor = "tap-preferred";
+          bindings = <&mo>, <&kp>;
         };
     };
-        keymap {
-                compatible = "zmk,keymap";
-
-                default_layer {
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
 // -----------------------------------------------------------------------------------------
 // |      | ESC   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  [   | GUI/] |
 //        | TAB   |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |CTRL/'|
 //        | LSHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RALT |
 //                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
                         bindings = <
-    &none   &kp ESC   &kp Q       &kp W      &kp E      &kp R       &kp T       &kp Y   &kp U       &kp I       &kp O      &kp P          &kp BSPC &none
-            &kp TAB   &hp LCTRL A &hp LALT S &hp LGUI D &hp LSHFT F &kp G       &kp H   &hp RSHFT J &hp RGUI K  &hp RALT L &hp RCTRL SEMI &kp SQT
-            &kp LSHFT &kp Z       &kp X      &kp C      &kp V       &kp B       &kp N   &kp M       &kp COMMA   &kp DOT    &kp FSLH       &kp LBKT
-                                  &kp TAB    &kp LSHFT  &lt NBR SPACE           &kp RET &mo RSE     &mo LWR
+    XXXX  __(ESC)    __(Q)  __(W)  __(E)  __(R)  __(T)      __(Y)  __(U)  __(I)      __(O)    __(P)     __(BSPC)  XXXX
+          __(TAB)    C__A   A__S   G__D   S__F   __(G)      __(H)  S__J   G__K       A__L     C_SEMI    __(SQT)
+          __(LSHFT)  __(Z)  __(X)  __(C)  __(V)  __(B)      __(N)  __(M)  __(COMMA)  __(DOT)  __(FSLH)  __(LBKT)
+                       __(TAB)  __(LSHFT)  LT(NBR,SPACE)      __(RET)  LT(RSE,SPACE)  LT(LWR,SPACE)
                         >;
                 };
                 lower_layer {
@@ -52,10 +74,10 @@
 //       |  =  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |     |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &trans   &trans  &kp N1   &kp N2 &kp N3  &kp N4  &kp N5       &kp N6       &kp N7       &kp N8     &kp N9        &kp N0          &trans       &trans
-            &trans  &kp CAPS &trans &trans  &trans  &trans       &kp LEFT     &kp DOWN     &kp UP     &kp RIGHT     &none           &kp C_VOL_UP
-            &trans  &kp ESC  &trans &trans  &trans  &trans       &kp LC(LEFT) &kp LC(DOWN) &kp LC(UP) &kp LC(RIGHT) &kp LC(LG(SPC)) &kp C_VOL_DN
-                                    &trans  &trans  &trans       &trans       &trans       &trans
+   TTTT  TTTT  __(N1)    __(N2)  __(N3)  __(N4)  __(N5)       __(N6)       __(N7)       __(N8)     __(N9)        __(N0)          TTTT          TTTT
+         TTTT  __(CAPS)  TTTT    TTTT    TTTT    TTTT         __(LEFT)     __(DOWN)     __(UP)     __(RIGHT)     XXXX             __(C_VOL_UP)
+         TTTT  __(ESC)   TTTT    TTTT    TTTT    TTTT         &kp LC(LEFT) &kp LC(DOWN) &kp LC(UP) &kp LC(RIGHT) &kp LC(LG(SPC)) &kp C_VOL_DN
+                                 TTTT    TTTT    TTTT         TTTT          TTTT          TTTT
                         >;
                 };
 
@@ -66,10 +88,10 @@
 //       |      |  0  |  1  |  2  |  3  |  .  |   | VOLD| END | DOWN| PGDN| PAUS|     |
 //                          |     |     | ADJ |   | ADJ |     |     |
                         bindings = <
-   &trans   &trans  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(N4)  &kp LS(N5)       &kp LS(N6)    &kp LS(N7)    &kp LS(N8)   &kp LS(N9)   &kp LS(N0)   &trans    &trans
-            &trans  &kp CAPS   &none      &none       &none       &none            &kp MINUS     &kp EQUAL     &kp LBKT     &kp LBRC     &kp BSLH     &kp TILDE
-            &trans  &kp ESC    &none      &none       &none       &none            &kp LS(MINUS) &kp LS(EQUAL) &kp LS(LBKT) &kp LS(LBRC) &kp LS(BSLH) &kp LS(TILDE)
-                                          &trans      &trans      &trans           &trans        &trans        &trans
+   TTTT   TTTT  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(N4)  &kp LS(N5)       &kp LS(N6)    &kp LS(N7)    &kp LS(N8)   &kp LS(N9)   &kp LS(N0)   TTTT    TTTT
+            TTTT  &kp CAPS   XXXX      XXXX       XXXX       XXXX            &kp MINUS     &kp EQUAL     &kp LBKT     &kp LBRC     &kp BSLH     &kp TILDE
+            TTTT  &kp ESC    XXXX      XXXX       XXXX       XXXX            &kp LS(MINUS) &kp LS(EQUAL) &kp LS(LBKT) &kp LS(LBRC) &kp LS(BSLH) &kp LS(TILDE)
+                                          TTTT      TTTT      TTTT           TTTT        TTTT        TTTT
                         >;
                 };
                 adjust_layer {
@@ -79,10 +101,10 @@
 //       |      |     |     |     |     |     |   |     |     |     |     |     |      |
 //                          |     |     |     |   |     |     |     |
                         bindings = <
-   &reset &bootloader  &none        &none        &none        &none        &none              &none        &none        &none        &none        &none         &bootloader &reset
+   &reset &bootloader  XXXX        XXXX        XXXX        XXXX        XXXX              XXXX        XXXX        XXXX        XXXX        XXXX         &bootloader &reset
           &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
-          &none        &none        &none        &none        &none        &none              &none        &none        &none        &none        &none         &none
-                                                                    &trans &none &trans   &trans &none &trans
+          XXXX        XXXX        XXXX        XXXX        XXXX        XXXX              XXXX        XXXX        XXXX        XXXX        XXXX         XXXX
+                                                                    TTTT XXXX TTTT   TTTT XXXX TTTT
                         >;
                 };
                 number_layer {
@@ -92,10 +114,10 @@
                 //       |      |     |     |     |     |     |   |     |     |     |     |     |      |
                 //                          |     |     |     |   |     |     |     |
                                         bindings = <
-                   &none  &none  &kp KP_EQUAL &kp KP_PLUS  &kp N7 &kp N8 &kp N9         &none        &none        &none        &none        &none         &bootloader &reset
-                          &none  &kp CAPS     &kp KP_MINUS &kp N4 &kp N5 &kp N6         &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
-                          &none  &kp ESC      &kp N0       &kp N1 &kp N2 &kp N3         &none        &none        &none        &none        &none         &none
-                                              &trans       &none  &trans                &trans       &trans       &trans
+                   XXXX  XXXX  &kp KP_EQUAL &kp KP_PLUS  &kp N7 &kp N8 &kp N9         XXXX        XXXX        XXXX        XXXX        XXXX         &bootloader &reset
+                          XXXX  &kp CAPS     &kp KP_MINUS &kp N4 &kp N5 &kp N6         &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
+                          XXXX  &kp ESC      &kp N0       &kp N1 &kp N2 &kp N3         XXXX        XXXX        XXXX        XXXX        XXXX         XXXX
+                                              TTTT       XXXX  TTTT                TTTT       TTTT       TTTT
                                         >;
                 };
         };
