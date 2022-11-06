@@ -89,8 +89,8 @@
 //                          |     |     | ADJ |   | ADJ |     |     |
                         bindings = <
    TTTT   TTTT  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(N4)  &kp LS(N5)       &kp LS(N6)    &kp LS(N7)    &kp LS(N8)   &kp LS(N9)   &kp LS(N0)   TTTT    TTTT
-            TTTT  &kp CAPS   XXXX      XXXX       XXXX       XXXX            &kp MINUS     &kp EQUAL     &kp LBKT     &kp LBRC     &kp BSLH     &kp TILDE
-            TTTT  &kp ESC    XXXX      XXXX       XXXX       XXXX            &kp LS(MINUS) &kp LS(EQUAL) &kp LS(LBKT) &kp LS(LBRC) &kp LS(BSLH) &kp LS(TILDE)
+            TTTT  &kp CAPS   XXXX      XXXX       XXXX       XXXX            &kp MINUS     &kp EQUAL     &kp LBKT     &kp LBRC     &kp BSLH     &kp GRAVE
+            TTTT  &kp ESC    XXXX      XXXX       XXXX       XXXX            &kp LS(MINUS) &kp LS(EQUAL) &kp LS(LBKT) &kp LS(LBRC) &kp LS(BSLH) &kp LS(GRAVE)
                                           TTTT      TTTT      TTTT           TTTT        TTTT        TTTT
                         >;
                 };
