@@ -61,10 +61,10 @@
 //        | LSHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RALT |
 //                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
                         bindings = <
-    XXXX  __(ESC)    __(Q)  __(W)  __(E)  __(R)  __(T)      __(Y)  __(U)  __(I)      __(O)    __(P)     __(BSPC)  XXXX
-          __(TAB)    C__A   A__S   G__D   S__F   __(G)      __(H)  S__J   G__K       A__L     C_SEMI    __(SQT)
-          __(LSHFT)  __(Z)  __(X)  __(C)  __(V)  __(B)      __(N)  __(M)  __(COMMA)  __(DOT)  __(FSLH)  __(LBKT)
-                       __(TAB)  __(LSHFT)  LT(NBR,SPACE)      __(RET)  LT(RSE,SPACE)  LT(LWR,SPACE)
+    XXXX  __(ESC)    __(Q)       __(W)      __(E)      __(R)       __(T)      __(Y)  __(U)       __(I)      __(O)      __(P)          __(BSPC)  XXXX
+          __(TAB)    MT(LCTRL,A) MT(LALT,S) MT(LGUI,D) MT(LSHFT,F) __(G)      __(H)  MT(RSHFT,J) MT(RGUI,K) MT(RALT,L) MT(RCTRL,SEMI) __(SQT)
+          __(LSHFT)  __(Z)       __(X)      __(C)      __(V)       __(B)      __(N)  __(M)       __(COMMA)  __(DOT)    __(FSLH)       __(LBKT)
+                                       __(TAB)  __(LSHFT)  LT(NBR,SPACE)      __(RET)  LT(RSE,SPACE)  LT(LWR,SPACE)
                         >;
                 };
                 lower_layer {
