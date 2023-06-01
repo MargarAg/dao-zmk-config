@@ -55,70 +55,44 @@
     keymap {
         compatible = "zmk,keymap";
         default_layer {
-// -----------------------------------------------------------------------------------------
-// |      | ESC   |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |  [   | GUI/] |
-//        | TAB   |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |CTRL/'|
-//        | LSHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RALT |
-//                           | RSE | SPC | LWR |   | LWR | BKSP | RSE |
-                        bindings = <
-    XXXX  __(ESC)    __(Q)       __(W)      __(E)      __(R)       __(T)      __(Y)  __(U)       __(I)      __(O)      __(P)          __(BSPC)  XXXX
-          __(TAB)    MT(LCTRL,A) MT(LALT,S) MT(LGUI,D) MT(LSHFT,F) __(G)      __(H)  MT(RSHFT,J) MT(RGUI,K) MT(RALT,L) MT(RCTRL,SEMI) __(SQT)
-          __(LSHFT)  __(Z)       __(X)      __(C)      __(V)       __(B)      __(N)  __(M)       __(COMMA)  __(DOT)    __(FSLH)       __(LBKT)
-                                       __(TAB)  __(LSHFT)  LT(NBR,SPACE)      __(RET)  LT(RSE,SPACE)  LT(LWR,SPACE)
-                        >;
-                };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |     |  _  |  F1 |  F2 |  F3 |  F4 |  F5 |   |  F6 |  F7 |  F8 |  F9 | F10 | F11 | F12 |
-//       |  +  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  -  |
-//       |  =  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |     |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   TTTT  TTTT  __(N1)    __(N2)  __(N3)  __(N4)  __(N5)       __(N6)       __(N7)       __(N8)     __(N9)        __(N0)          TTTT          TTTT
-         TTTT  __(CAPS)  TTTT    TTTT    TTTT    TTTT         __(LEFT)     __(DOWN)     __(UP)     __(RIGHT)     XXXX             __(C_VOL_UP)
-         TTTT  __(ESC)   TTTT    TTTT    TTTT    TTTT         &kp LC(LEFT) &kp LC(DOWN) &kp LC(UP) &kp LC(RIGHT) &kp LC(LG(SPC)) &kp C_VOL_DN
-                                 TTTT    TTTT    TTTT         TTTT          TTTT          TTTT
-                        >;
-                };
-
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |     | NMLK |  /  |  7  |  8  |  9  |  -  |   | VOLU| HOME| PRSC| PGUP| SCLK| CLCK|     |
-//       | CTRL |  *  |  4  |  5  |  6  |  +  |   | MUT | LEFT|  UP | RGHT| INS | APP |
-//       |      |  0  |  1  |  2  |  3  |  .  |   | VOLD| END | DOWN| PGDN| PAUS|     |
-//                          |     |     | ADJ |   | ADJ |     |     |
-                        bindings = <
-   TTTT   TTTT  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(N4)  &kp LS(N5)       &kp LS(N6)    &kp LS(N7)    &kp LS(N8)   &kp LS(N9)   &kp LS(N0)   TTTT    TTTT
-            TTTT  &kp CAPS   XXXX      XXXX       XXXX       XXXX            &kp MINUS     &kp EQUAL     &kp LBKT     &kp RBKT     &kp BSLH     &kp GRAVE
-            TTTT  &kp ESC    XXXX      XXXX       XXXX       XXXX            &kp LS(MINUS) &kp LS(EQUAL) &kp LS(LBKT) &kp LS(RBKT) &kp LS(BSLH) &kp LS(GRAVE)
-                                          TTTT      TTTT      TTTT           TTTT        TTTT        TTTT
-                        >;
-                };
-                adjust_layer {
-// -----------------------------------------------------------------------------------------
-// | RST | BLDR |     |     |     |     |     |   |     |     |     |     |     | BLDR | RST |
-//       | BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
-//       |      |     |     |     |     |     |   |     |     |     |     |     |      |
-//                          |     |     |     |   |     |     |     |
-                        bindings = <
-   &sys_reset &bootloader  XXXX        XXXX        XXXX        XXXX        XXXX              XXXX        XXXX        XXXX        XXXX        XXXX         &bootloader &sys_reset
-          &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
-          XXXX        XXXX        XXXX        XXXX        XXXX        XXXX              XXXX        XXXX        XXXX        XXXX        XXXX         XXXX
-                                                                    TTTT XXXX TTTT   TTTT XXXX TTTT
-                        >;
-                };
-                number_layer {
-                // -----------------------------------------------------------------------------------------
-                // | RST | BLDR |     |     |     |     |     |   |     |     |     |     |     | BLDR | RST |
-                //       | BTCLR| BT0 | BT1 | BT2 | BT3 | BT4 |   | BT4 | BT3 | BT2 | BT1 | BT0 | BTCLR|
-                //       |      |     |     |     |     |     |   |     |     |     |     |     |      |
-                //                          |     |     |     |   |     |     |     |
-                                        bindings = <
-                   XXXX  XXXX  &kp KP_EQUAL &kp KP_PLUS  &kp N7 &kp N8 &kp N9         XXXX        XXXX        XXXX        XXXX        XXXX         &bootloader &reset
-                          XXXX  &kp CAPS     &kp KP_MINUS &kp N4 &kp N5 &kp N6         &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
-                          XXXX  &kp ESC      &kp N0       &kp N1 &kp N2 &kp N3         XXXX        XXXX        XXXX        XXXX        XXXX         XXXX
-                                              TTTT       XXXX  TTTT                TTTT       TTTT       TTTT
-                                        >;
-                };
+            bindings = <
+      XXXX  __(ESC)    __(Q)       __(W)      __(E)      __(R)       __(T)      __(Y)    __(U)          __(I)      __(O)      __(P)          __(BSPC)  XXXX
+            __(TAB)    MT(LCTRL,A) MT(LALT,S) MT(LGUI,D) MT(LSHFT,F) __(G)      __(H)    MT(RSHFT,J)    MT(RGUI,K) MT(RALT,L) MT(RCTRL,SEMI) __(SQT)
+            __(LSHFT)  __(Z)       __(X)      __(C)      __(V)       __(B)      __(N)    __(M)          __(COMMA)  __(DOT)    __(FSLH)       __(LBKT)
+                                         __(TAB)  __(LSHFT)  LT(NBR,SPACE)      __(RET)  LT(RSE,SPACE)  LT(LWR,SPACE)
+            >;
         };
+        lower_layer {
+            bindings = <
+      XXXX  TTTT    __(N1)      __(N2)    __(N3)    __(N4)    __(N5)         __(N6)        __(N7)        __(N8)      __(N9)         __(N0)           TTTT           XXXX
+            TTTT    __(CAPS)      TTTT      TTTT      TTTT      TTTT         __(LEFT)      __(DOWN)      __(UP)      __(RIGHT)      XXXX              __(C_VOL_UP)
+            TTTT    __(ESC)       TTTT      TTTT      TTTT      TTTT         &kp LC(LEFT)  &kp LC(DOWN)  &kp LC(UP)  &kp LC(RIGHT)  &kp LC(LG(SPC))  &kp C_VOL_DN
+                                            TTTT      TTTT      TTTT         TTTT          TTTT          TTTT
+            >;
+        };
+        raise_layer {
+            bindings = <
+      XXXX  TTTT  &kp LS(N1) &kp LS(N2) &kp LS(N3)  &kp LS(N4)  &kp LS(N5)         &kp LS(N6)     &kp LS(N7)     &kp LS(N8)    &kp LS(N9)    &kp LS(N0)    TTTT          XXXX
+            TTTT  &kp CAPS   XXXX       XXXX        XXXX        XXXX               &kp MINUS      &kp EQUAL      &kp LBKT      &kp RBKT      &kp BSLH      &kp GRAVE
+            TTTT  &kp ESC    XXXX       XXXX        XXXX        XXXX               &kp LS(MINUS)  &kp LS(EQUAL)  &kp LS(LBKT)  &kp LS(RBKT)  &kp LS(BSLH)  &kp LS(GRAVE)
+                                        TTTT        TTTT        TTTT               TTTT           TTTT           TTTT
+            >;
+        };
+        adjust_layer {
+            bindings = <
+     XXXX   &sys_reset   &bootloader    XXXX          XXXX          XXXX          XXXX               XXXX          XXXX          XXXX          XXXX          &bootloader   &sys_reset  XXXX
+            &bt BT_CLR   &bt BT_SEL 0   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
+            XXXX         XXXX           XXXX          XXXX          XXXX          XXXX               XXXX          XXXX          XXXX          XXXX          XXXX          XXXX
+                                                      TTTT          XXXX          TTTT               TTTT          XXXX          TTTT
+            >;
+        };
+        number_layer {
+            bindings = <
+      XXXX  XXXX  __(KP_EQUAL)  __(KP_PLUS)   __(N7)  __(N8)  __(N9)         XXXX          XXXX          XXXX          XXXX          &bootloader   &sys_reset  XXXX
+            XXXX  __(CAPS)      __(KP_MINUS)  __(N4)  __(N5)  __(N6)         &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
+            XXXX  __(ESC)       __(N0)        __(N1)  __(N2)  __(N3)         XXXX          XXXX          XXXX          XXXX          XXXX          XXXX
+                                                TTTT    XXXX    TTTT         TTTT          TTTT          TTTT
+            >;
+        };
+    };
 };
